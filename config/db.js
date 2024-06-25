@@ -6,6 +6,6 @@ const connectDB = mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log("Connected to DataBase..."))
-  .catch((err) => console.error(err));
+  .catch((err) => console.log("Database Connection Failed"));
 
 module.exports = connectDB;

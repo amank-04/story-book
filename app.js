@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const { engine } = require("express-handlebars");
 const session = require("express-session");
@@ -5,8 +6,15 @@ const connectDB = require("./config/db");
 const MongoStore = require("connect-mongo");
 const methodOverride = require("method-override");
 const passport = require("passport");
+const cors = require("cors");
 
 const app = express();
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -24,13 +32,7 @@ app.use(
 require("./config/passport")(passport);
 connectDB;
 
-const {
-  formatDate,
-  stripTags,
-  truncate,
-  editIcon,
-  select,
-} = require("./helpers/hbs");
+const { formatDate, stripTags, truncate, editIcon, select } = require("./helpers/hbs");
 
 app.engine(
   ".hbs",
@@ -63,4 +65,4 @@ app.use("/", require("./routes/index"));
 app.use("/auth", require("./routes/auth"));
 app.use("/stories", require("./routes/stories"));
 
-app.listen(process.env.PORT, console.log(`Server at: http://localhost:5000`));
+app.listen(process.env.PORT, console.log(`Server at: http://localhost:${process.env.PORT}`));
