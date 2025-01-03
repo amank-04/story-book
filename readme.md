@@ -43,8 +43,8 @@ Storybook is a web application designed to let users chronicle their life journe
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/storybook.git
-   cd storybook
+   git clone https://github.com/amank-04/story-book.git
+   cd story-book
    ```
 
 2. Install dependencies:
